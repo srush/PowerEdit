@@ -1,0 +1,7 @@
+moviepy
+streamlit
+pyaudacity
+google-api-python-client
+oauth2client
+progressbar2
+git+https://github.com/tokland/youtube-upload
