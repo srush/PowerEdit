@@ -2,6 +2,8 @@
 
 I wanted to make videos, but I also didn't want to learn how to use video editing software. This was my attempt to get around that issue. 
 
+This software lets you make "videos" that just consist of talking over static slides. If you want anything fancier this is not for you.
+
 ![image](https://github.com/srush/PowerEdit/assets/35882/73da1e11-c6d7-4a51-9fa9-b7b1e917ed49)
 
 
@@ -16,7 +18,7 @@ Clone this repo and install this repo `requirements.txt`.
 ```bash
 > apt-get install poppler-utils
 > git clone https://github.com/srush/PowerEdit/
-> cd PowerEdit; pip install -r requirement.txt
+> cd PowerEdit; pip install -r requirements.txt
 ```
 
 ## Usage. 
