@@ -23,7 +23,7 @@ Clone this repo and install this repo `requirements.txt`.
 
 ## Usage. 
 
-Let's say we are making a video for Lecture11.
+There is an example included in the repo called `Lecture11` Here's how I made it.
 
 1) Make slides using software that lets you export to PDF (beamer, reveal.js, google slides w/o animations, etc)
 2) Save Lecture11.pdf to the slides/ directory, and run `python convert.py`
