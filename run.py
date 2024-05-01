@@ -1,8 +1,9 @@
+
 import glob
 import streamlit as st
 import pyaudacity as pa
 import sys
-
+import time
 
 
 if 'counter' not in st.session_state: 
@@ -19,21 +20,35 @@ def record():
 
 def reset_to_last():
     pa.stop()
+    time.sleep(0.2)
+    pa.do(f'MoveToNextLabel')
+    time.sleep(0.2)
     pa.do('MoveToPrevLabel')
+    time.sleep(0.2)
     pa.do('PunchAndRoll')
-    
+    time.sleep(0.2)
+
 def showPhoto(photo, skip):
     st.write(f"Index as a session_state attribute: {st.session_state.counter}")
     st.write(f"Label: {st.session_state.label}")
-
     if not skip:
-        print(pa.do('AddLabelPlaying'))
-        pa.do(f'SetLabel: Label="{st.session_state.label}" Text="{photo}"')
-        pa.do(f'Select:End="0 Mode="Set" RelativeTo="ProjectStart" Start="0"')
-        pa.record1st_choice()
-        st.session_state.label += 1    
-    ## Increments the counter to get next photo
-    st.session_state.counter += 1
+        try:
+            print(pa.do('AddLabelPlaying'))
+            time.sleep(0.2)
+            pa.do(f'SetLabel: Label="{st.session_state.label}" Text="{photo}-{st.session_state.label}"')
+            time.sleep(0.2)
+            pa.do(f'Select: End="0" Mode="Set" RelativeTo="ProjectStart" Start="0"')
+            time.sleep(0.2)
+            st.session_state.label += 1
+            st.session_state.counter += 1
+            pa.record1st_choice()
+
+        ## Increments the counter to get next photo
+        except pa.PyAudacityException as e:
+            print("failed", e)
+    else:
+        st.session_state.counter += 1
+
 
         
 ls = list([j for i,j in enumerate(sorted(list(glob.glob(f"slides/{sys.argv[1]}*.png"))))])
